@@ -1,0 +1,28 @@
+{
+  "name": "pdf-toolkit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal PDF tools: merge, PDF/Word, PDF/JPG",
+  "main": "server.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/assets/styles.css --minify",
+    "build": "npm run build:css",
+    "dev": "npm run build:css && node --watch server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "docx": "^8.5.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "multer": "^1.4.5-lts.1",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "pdf-to-img": "^4.2.0",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.14"
+  }
+}
