@@ -1,0 +1,4 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+a:focus-visible, button:focus-visible { outline: 2px solid #c2370f; outline-offset: 2px; }
