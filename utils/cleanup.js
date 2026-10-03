@@ -1,8 +1,15 @@
 const fs = require('fs/promises');
+const os = require('os');
 const path = require('path');
 
 // Temp folder lives outside /public so it can never be served.
-const TEMP_DIR = path.resolve(process.env.TEMP_DIR || path.join(__dirname, '..', 'temp'));
+// On Vercel only /tmp is writable, so use the OS temp dir there.
+const TEMP_DIR = path.resolve(
+  process.env.TEMP_DIR ||
+    (process.env.VERCEL
+      ? path.join(os.tmpdir(), 'pdf-toolkit')
+      : path.join(__dirname, '..', 'temp'))
+);
 const ensureTemp = () => fs.mkdir(TEMP_DIR, { recursive: true });
 const removeFiles = (paths) => Promise.all(paths.map((p) => fs.rm(p, { recursive: true, force: true }).catch(() => {})));
 
